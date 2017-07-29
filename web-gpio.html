@@ -24,12 +24,17 @@
           type: Number,
           value: 1000,
         },
+        read: Boolean,
+        write: Boolean,
         _gpio: Object,
       },
       observers: [
-        '_read(_gpio, port)'
+        '_read(_gpio, port, read)'
+        '_write(_gpio, port, value, write)'
       ],
       _read: function() {
+        if (!this.read) return;
+
         var port = this._gpio.ports.get(this.port);
         port.export("in").then(()=>{
           setInterval(()=>{
@@ -38,6 +43,14 @@
               this.value = value;
             });
           },this.interval);
+        });
+      },
+      _write: function() {
+        if (!this.write) return;
+
+        var port = this._gpio.ports.get(this.port);
+        port.export("out").then(()=>{
+          port.write(this.value);
         });
       },
       ready: function() {
