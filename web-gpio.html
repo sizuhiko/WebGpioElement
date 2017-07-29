@@ -47,10 +47,9 @@
             return gpioAccess;
           }).then(gpio=>{
             this._gpio = gpio;
+          }).catch(error=>{
+            console.log("Failed to get GPIO access catch: " + error.message);
           });
-        }).catch(error=>{
-          console.log("Failed to get GPIO access catch: " + error.message);
-        });
       }
     });
   </script>
