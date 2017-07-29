@@ -7,7 +7,8 @@
     "url": "git@github.com:sizuhiko/WebGpioElement.git"
   },
   "dependencies": {
-    "polymer": "Polymer/polymer#1.9 - 2"
+    "polymer": "Polymer/polymer#1.9 - 2",
+    "webgpio": "webgpio-polyfill#draft-20160125"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
