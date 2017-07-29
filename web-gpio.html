@@ -1,0 +1,57 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="../webgpio/dist/webgpio.js"></script>
+
+<dom-module id="web-gpio">
+
+  <script>
+    /**
+     * `web-gpio`
+     * CustomElement for WebGPIO on CHIRIMEN 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    Polymer({
+      is: 'web-gpio',
+      properties: {
+        port: Number,
+        value: {
+          type: Object,
+          notify: true,
+        },
+        interval: {
+          type: Number,
+          value: 1000,
+        },
+        _gpio: Object,
+      },
+      observers: [
+        '_read(_gpio, port)'
+      ],
+      _read: function() {
+        var port = this._gpio.ports.get(this.port);
+        port.export("in").then(()=>{
+          setInterval(()=>{
+            port.read().then( (value)=>{
+              console.log("gpio= "+value);
+              this.value = value;
+            });
+          },this.interval);
+        });
+      },
+      ready: function() {
+        navigator.requestGPIOAccess().then(
+          function(gpioAccess) {
+            console.log("GPIO ready!");
+            return gpioAccess;
+          }).then(gpio=>{
+            this._gpio = gpio;
+          });
+        }).catch(error=>{
+          console.log("Failed to get GPIO access catch: " + error.message);
+        });
+      }
+    });
+  </script>
+</dom-module>
