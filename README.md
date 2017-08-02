@@ -2,20 +2,39 @@
 
 CustomElement for WebGPIO on CHIRIMEN 
 
-## Install the Polymer-CLI
+## Requirements
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+This element is able to use on only web application borded on [CHIRIMEN Open Hardware](https://chirimen.org/).
 
-## Viewing Your Element
+## Demo and Example
 
-```
-$ polymer serve
-```
+[Polymer CHIRIMEN](https://github.com/sizuhiko/polymerchirimen) is example application for using this element.
 
-## Running Tests
+## Install this element for your page
 
-```
-$ polymer test
+```sh
+$ bower install https://github.com/sizuhiko/WebGpioElement.git
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+## Using this element for your page
+
+### Import this element
+
+```html
+<link rel="import" href="/bower_components/web-gpio/web-gpio.html">
+```
+
+### Attach this element 
+
+It can read from 198 port of GPIO, stored to variable named of `value`.
+It will notify if value changed.
+
+```html
+<web-gpio port="198" value="{{value}}" read></web-gpio>
+```
+
+It can write value that variable named of `value` to 192 port of GPIO.
+
+```html
+<web-gpio port="192" value="{{value}}" write></web-gpio>
+```
