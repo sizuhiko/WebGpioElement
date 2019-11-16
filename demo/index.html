@@ -3,28 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
     <title>web-gpio demo</title>
-
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../web-gpio.html">
-
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-      </style>
-    </custom-style>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+    <script type="module" src = "../web-gpio-elements.js"></script>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic web-gpio demo</h3>
-      <demo-snippet>
-        <template>
-          <web-gpio></web-gpio>
-        </template>
-      </demo-snippet>
+      <web-gpio>
+        <web-gpio-peripheral port="26" mode="out"></web-gpio-peripheral>
+        <web-gpio-peripheral port="5" mode="in"></web-gpio-peripheral>
+        <div slot="no-web-gpio">
+          このデバイスはCHIRIMENではありません。
+        </div>
+      </web-gpio>
     </div>
   </body>
 </html>

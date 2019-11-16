@@ -1,0 +1,34 @@
+{
+  "name": "@chirimen-elements/web-gpio-element",
+  "version": "0.1.0",
+  "description": "CustomElement for WebGPIO on CHIRIMEN",
+  "main": "web-gpio-elements.js",
+  "browser": "web-gpio-elements.bundled.js",
+  "scripts": {
+    "build": "rollup -c && rollup -c rollup.config.bundled.js",
+    "lint": "tslint --project ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sizuhiko/WebGpioElement.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sizuhiko/WebGpioElement/issues"
+  },
+  "homepage": "https://github.com/sizuhiko/WebGpioElement#readme",
+  "dependencies": {
+    "lit-element": "^2.2.1"
+  },
+  "devDependencies": {
+    "@chirimen-raspi/polyfill": "^1.0.1",
+    "@webcomponents/webcomponentsjs": "^2.4.0",
+    "rollup": "^1.27.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  }
+}
